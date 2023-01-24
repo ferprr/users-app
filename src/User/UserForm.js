@@ -8,6 +8,7 @@ import styles from "./UserForm.module.css";
 const UserForm = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
+  const [error, setError] = useState(null);
 
   const usernameChangeHandler = (event) => {
     setUsername(event.target.value);
@@ -23,6 +24,10 @@ const UserForm = (props) => {
     event.preventDefault();
 
     if (username.trim().length === 0 || age.trim().length === 0) {
+      setError({
+        title: "Invalid input",
+        message: "Please enter a non-empty value.",
+      });
       return;
     }
 
@@ -37,9 +42,14 @@ const UserForm = (props) => {
     setAge("");
   };
 
+  const errorHandler = () => {
+    setError(null);
+  };
+
   return (
     <div>
-      <ErrorModal title="An error occured" message="username or age invalid" />
+      {error && <ErrorModal title={error.title} message={error.message} onConfirm={errorHandler}/>}
+
       <Card className={styles.input}>
         <form onSubmit={submitHandler}>
           <label htmlFor="username">Username</label>
