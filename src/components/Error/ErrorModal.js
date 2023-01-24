@@ -3,6 +3,9 @@ import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styles from "./ErrorModal.module.css";
 
+// in this modal template, the app is rendering the modal side by side with the form
+// so, aiming to improve this, we can create portals, wich can prioritize the overlays (improving the screen readers, for example)
+// this way, the overlays will be above, side by side with root
 const ErrorModal = (props) => {
   return (
     <Wrapper>

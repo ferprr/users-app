@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ErrorModal from "../Error/ErrorModal";
+import ErrorModal from "../Error/ErrorModalPortal";
 import Wrapper from "../Helpers/Wrapper";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
