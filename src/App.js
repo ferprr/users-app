@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import UserForm from "./User/UserForm";
-import UsersList from "./User/UsersList";
+import Wrapper from "./components/Helpers/Wrapper";
+import UserForm from "./components/User/UserForm";
+import UsersList from "./components/User/UsersList";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -20,10 +21,10 @@ function App() {
   };
 
   return (
-    <div>
+    <Wrapper>
       <UserForm onAddUser={addUserHandler}/>
       <UsersList users={users} />
-    </div>
+    </Wrapper>
   );
 }
 
