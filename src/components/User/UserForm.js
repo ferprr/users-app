@@ -6,6 +6,9 @@ import Card from "../UI/Card";
 import styles from "./UserForm.module.css";
 
 const UserForm = (props) => {
+  // const nameInputRef = useRef();
+  // const ageInputRef = useRef();
+
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
   const [error, setError] = useState(null);
@@ -21,6 +24,11 @@ const UserForm = (props) => {
   };
 
   const submitHandler = (event) => {
+    // const enteredName = nameInputRef.current.value;
+    // const enteredAge = ageInputRef.current.value;
+
+    //console.log(enteredName);
+
     event.preventDefault();
 
     if (username.trim().length === 0 || age.trim().length === 0) {
@@ -31,12 +39,23 @@ const UserForm = (props) => {
       return;
     }
 
+    // if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
+    //   setError({
+    //     title: "Invalid input",
+    //     message: "Please enter a non-empty value.",
+    //   });
+    //   return;
+    // }
+
     const userData = {
       username: username,
       age: age,
     };
 
     props.onAddUser(userData);
+
+    // nameInputRef.current.value = '';
+    // ageInputRef.current.value = '';
 
     setUsername("");
     setAge("");
@@ -63,6 +82,7 @@ const UserForm = (props) => {
             id="username"
             type="text"
             value={username}
+            //ref={nameInputRef}
             onChange={usernameChangeHandler}
           ></input>
           <label htmlFor="age">Age (Years)</label>
@@ -70,6 +90,7 @@ const UserForm = (props) => {
             id="age"
             type="number"
             value={age}
+            //ref={ageInputRef}
             min={1}
             onChange={ageChangeHandler}
           ></input>
